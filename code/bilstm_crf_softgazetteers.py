@@ -136,9 +136,7 @@ class NERTagger(object):
     def read_train(self, filename, feature_file):
         train_sents = []
 
-        feature_vectors = np.load(
-            feature_file, allow_pickle=True
-        )["feats"]
+        feature_vectors = np.load(feature_file, allow_pickle=True)["feats"]
         if self.featsize == 0:
             self.featsize = int(feature_vectors[0][0].shape[0])
         sent_count = 0
@@ -180,9 +178,7 @@ class NERTagger(object):
     def read_test(self, filename, feature_file):
         sents = []
 
-        feature_vectors = np.load(
-            feature_file, allow_pickle=True
-        )["feats"]
+        feature_vectors = np.load(feature_file, allow_pickle=True)["feats"]
         sent_count = 0
         with open(filename, "r", encoding="utf8") as f:
             sent = []
@@ -475,7 +471,14 @@ if __name__ == "__main__":
         logging.info(str(args) + "\n")
 
         start = time.time()
-        tagger_model.train(epochs=200, trainer=args.trainer, lr=args.lr, no_decay=args.no_decay, patience=5, end_patience=30)
+        tagger_model.train(
+            epochs=200,
+            trainer=args.trainer,
+            lr=args.lr,
+            no_decay=args.no_decay,
+            patience=5,
+            end_patience=30,
+        )
         end = time.time()
         logging.info("Training time: %0.4f\n" % (end - start))
 

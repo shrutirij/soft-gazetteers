@@ -73,6 +73,6 @@ def return_argparser():
         help="restart training (fine-tuning an existing model)",
     )
 
-    parser.add_argument('--output_name', help='name for log file and saved model')
+    parser.add_argument("--output_name", help="name for log file and saved model")
 
     return parser
