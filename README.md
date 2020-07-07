@@ -26,10 +26,17 @@ The example is in IOB2 format, but any other tagging scheme will work with the c
 
 We retrieve candidates through an entity linking system and store the created features prior to training the NER model, which reduces the computational overhead at training time. Features for the train, development, and test sets are to be created in the same way.
 
+Install the required packages.
+```
+pip install -r requirements.txt
+```
+
 Consider a file, `train.conll`. 
 
 1. **Extract spans** up to length *n* from the conll file.
-`python data/get_ngrams.py --n 3 --filenames test.conll --output ngrams_list`
+```
+python data/get_ngrams.py --n 3 --filenames test.conll --output ngrams_list
+```
 
 2. **Retrieve candidates** for all spans with an entity linking system.
 In the paper, we use three methods for candidate retrieval. The knowledge base (KB) we use is extracted from Wikipedia: `data/english_knowledge-base.zip`.

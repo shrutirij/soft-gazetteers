@@ -131,3 +131,4 @@ dmypy.json
 code/models
 code/outputs
 data/example
+*.DS_Store*
