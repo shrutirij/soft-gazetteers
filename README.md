@@ -56,7 +56,7 @@ python code/create_softgaz_features.py  \
 ```
 4. **Train the NER model** with the soft gazetteer features.
 
-<div align="center"><img alt="NER Model" src="ner_model.jpg"></div>
+<div align="center"><img alt="NER Model" width="500px" src="ner_model.jpg"></div>
 
 ```
 python code/bilstm_crf_softgazetteers.py  \
