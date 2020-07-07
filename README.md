@@ -90,6 +90,8 @@ The catalog numbers are:
 - Sinhala: LDC2018E70
 - Tigrinya: LDC2017E57
 
+Use `data/create_conll_from_ldc.py` to convert the data from LDC format to CoNLL format.
+
 ## Citation
 Please cite our paper if this repository was useful.
 ```
