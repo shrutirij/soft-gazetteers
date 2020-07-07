@@ -6,6 +6,7 @@ Traditional named entity recognition models use gazetteers (lists of entities) a
 
 The paper contains experiments and analysis on four low-resource languages: Kinyarwanda (example sentence below), Oromo, Sinhala, and Tigrinya.
 
+<div align="center"><img alt="Soft Gazetteer Feature Creation" src="soft_gaz.jpg"></div>
 
 ## Creating soft gazetteer features
 The following process expects input in the CoNLL format: each line contains a word and its label for the NER task (space-separated), with a empty line between sentences. An example in English:
@@ -54,6 +55,9 @@ python code/create_softgaz_features.py  \
  --conll_file train.conll
 ```
 4. **Train the NER model** with the soft gazetteer features.
+
+<div align="center"><img alt="Soft Gazetteer Feature Creation" src="new_model.jpg"></div>
+
 ```
 python code/bilstm_crf_softgazetteers.py  \
 --train train.conll  \
