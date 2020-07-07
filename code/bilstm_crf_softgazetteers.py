@@ -252,17 +252,18 @@ class NERTagger(object):
             )
             for chars, word, feats, tag in sentence
         ]
-        # zero_feats = [dy.affine_transform([self.feat_b, self.feat_w, dy.inputTensor(np.zeros(shape=(self.featsize, 1)))]) for chars,word,feats,tag in sentence]
         zero_feats = [
             dy.inputTensor(np.zeros(shape=(FEAT_OUT_SIZE, 1)))
             for chars, word, feats, tag in sentence
         ]
 
+        # Non-linear transform for soft gazetteer features
         if self.feat_func == "tanh":
             word_feats = [dy.tanh(feat) for feat in word_feats]
         elif self.feat_func == "relu":
             word_feats = [dy.rectify(feat) for feat in word_feats]
 
+        # Soft gazetteer features at the LSTM level
         if self.lstm_feats:
             cur_feats = word_feats
         else:
@@ -276,6 +277,7 @@ class NERTagger(object):
 
         contexts = self.word_lstm.transduce(word_reps)
 
+        # Soft gazetteer features at the CRF level
         if self.crf_feats:
             cur_feats = word_feats
         else:
@@ -305,6 +307,7 @@ class NERTagger(object):
             for context, feats in zip(contexts, cur_feats)
         ]
 
+        # Autoencoder feature reconstruction
         if self.lstm_feats:
             feat_reconstruct = [
                 dy.logistic(
