@@ -64,7 +64,7 @@ class CRFModule:
     Calculates the score of a tag sequence. 
     Score(x,y) = sum(log emit(xi->yi) + log trans(y_i-1->y_i)) = sum(h_i[y_i] + T[y_i,y_i-1])
     h_i[y_i] = output state of the LSTM
-    Atarting from begin tag, so i->i+1
+    Starting from begin tag, so i->i+1
     """
 
     def score_sentence(self, features, t_features, tags):
